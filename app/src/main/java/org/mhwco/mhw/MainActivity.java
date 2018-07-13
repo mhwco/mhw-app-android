@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity
 
         //WebView
         WebView wv=findViewById(R.id.wv);
-        class WebAppJavaScriptInterface {
+        /*class WebAppJavaScriptInterface {
             int CurrentPageRole=0;
             @JavascriptInterface
             String getVersionName(){
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity
             }
         }
         WebAppJavaScriptInterface wajsi=new WebAppJavaScriptInterface();
-        wv.addJavascriptInterface(wajsi,"app");
+        wv.addJavascriptInterface(wajsi,"app");*/
         //WebView WebChromeClient
         WebChromeClient wvchrome=new WebChromeClient(){
 
