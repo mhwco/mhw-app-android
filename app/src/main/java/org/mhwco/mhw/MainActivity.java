@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //WebView
-        WebView wv=R.id.wv;
+        WebView wv=findViewById(R.id.wv);
         class WebAppJavaScriptInterface {
             int CurrentPageRole=0;
             @JavascriptInterface
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_refresh) {
             return true;
         }
 
