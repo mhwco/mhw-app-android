@@ -49,11 +49,14 @@ public class MainActivity extends AppCompatActivity
         //WebView
         WebView wv=R.id.wv;
         class WebAppJavaScriptInterface {
-            public int CurrentPageRole=0;
-            public String getVersionName(){
+            int CurrentPageRole=0;
+            @JavascriptInterface
+            String getVersionName(){
                 return VersionName;
             }
-            public void setCurrentPageRole(int pageRole){
+
+            @JavascriptInterface
+            void setCurrentPageRole(int pageRole){
                 CurrentPageRole=pageRole;
                 switch(pageRole){
                     case 0://homepage
@@ -83,6 +86,8 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         }
+        WebAppJavaScriptInterface wajsi=new WebAppJavaScriptInterface();
+        wv.addJavascriptInterface(wajsi,"app");
         //WebView WebChromeClient
         WebChromeClient wvchrome=new WebChromeClient(){
 
