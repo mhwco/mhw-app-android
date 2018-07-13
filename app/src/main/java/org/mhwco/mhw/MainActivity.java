@@ -13,10 +13,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.*;
+import android.content.pm.PackageManager;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    String VersionName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,41 @@ public class MainActivity extends AppCompatActivity
 
         //WebView
         WebView wv=R.id.wv;
+        class WebAppJavaScriptInterface {
+            public int CurrentPageRole=0;
+            public String getVersionName(){
+                return VersionName;
+            }
+            public void setCurrentPageRole(int pageRole){
+                CurrentPageRole=pageRole;
+                switch(pageRole){
+                    case 0://homepage
+
+                        break;
+                    case 1://article page
+
+                        break;
+                    case 2://每日一题 page
+
+                        break;
+                    case 3://article list
+
+                        break;
+                    case 4://article list
+
+                        break;
+                    case 5://每日一题 list
+
+                        break;
+                    case 6://about list
+
+                        break;
+                    default://non app page
+
+                        break;
+                }
+            }
+        }
         //WebView WebChromeClient
         WebChromeClient wvchrome=new WebChromeClient(){
 
@@ -55,6 +91,14 @@ public class MainActivity extends AppCompatActivity
         WebViewClient wvclient=new WebViewClient(){
 
         };
+        //WebView Settings
+        WebSettings wvsettings=wv.getSettings();
+        wvsettings.setJavaScriptEnabled(true);
+        wvsettings.setAllowContentAccess(true);
+        wvsettings.setAllowFileAccess(true);
+        wvsettings.setAllowFileAccessFromFileURLs(true);
+        wvsettings.setDefaultTextEncodingName("utf-8");
+        wvsettings.setSupportZoom(true);
     }
 
     @Override
