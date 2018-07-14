@@ -5,33 +5,33 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
-            android:title="首页" />
+            android:title="Import" />
         <item
-            android:id="@+id/nav_daily"
+            android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="每日一题" />
+            android:title="Gallery" />
         <item
-            android:id="@+id/nav_article"
+            android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="文章" />
+            android:title="Slideshow" />
         <item
-            android:id="@+id/nav_github"
+            android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="MHWCO GitHub" />
+            android:title="Tools" />
     </group>
 
-    <item android:title="更多">
+    <item android:title="Communicate">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="分享" />
+                android:title="Share" />
             <item
-                android:id="@+id/nav_about"
+                android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
-                android:title="关于" />
+                android:title="Send" />
         </menu>
     </item>
 
