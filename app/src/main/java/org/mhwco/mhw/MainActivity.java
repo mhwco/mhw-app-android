@@ -1,5 +1,8 @@
 package org.mhwco.mhw;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,7 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -45,6 +51,43 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        WebView webView = (WebView)findViewById(R.id.wv);
+        WebSettings settings = webView.getSettings();
+        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        settings.setJavaScriptEnabled(true);
+        settings.setSupportZoom(true);
+        settings.setBuiltInZoomControls(true);
+        settings.setDefaultTextEncodingName("utf-8");
+        webView.setWebViewClient(new WebViewClient(){
+            //ProgressDialog prd = new ProgressDialog(getApplicationContext());
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView wv,String url){
+                wv.loadUrl(url);
+                return true;
+            }
+            @Override
+            public void onPageStarted(WebView wv, String url, Bitmap favico){
+                Toast.makeText(getApplicationContext(),url+"开始加载",Toast.LENGTH_SHORT).show();
+                /*prd.setMessage("请稍候");
+                prd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                prd.show();*/
+            }
+            @Override
+            public void onReceivedError(WebView wv, int errorCode, String description,
+                                        String failingUrl){
+                //new AlertDialog.Builder(getApplicationContext()).setTitle("Oops!").setMessage("网页遇到一些小错误...\n错误码:" + errorCode + "\n错误描述:" + description + "\n错误出现在:" + failingUrl).setPositiveButton("确定",null).create().show();
+                Toast.makeText(getApplicationContext(),"网页遇到一些小错误...\n错误码:" + errorCode + "\n错误描述:" + description + "\n错误出现在:" + failingUrl,Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onPageFinished(WebView wv,String url){
+                Toast.makeText(getApplicationContext(),url+"加载完成",Toast.LENGTH_SHORT).show();
+                //prd.dismiss();
+            }
+        });
+        webView.setWebChromeClient(new WebChromeClient(){
+
+        });
+        webView.loadUrl(home_url+"index.html");
     }
 
     @Override
